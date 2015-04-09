@@ -169,7 +169,7 @@
             ':nome' => $_POST['nome']
         ); 
 
-        $userdir = "/music/".$_POST['username'];
+        $userdir = "/music/utenti/".$_POST['username'];
         if (!mkdir("$userdir", 0777, true)) 
         {
             die('Failed to create folders...');

@@ -7,7 +7,7 @@ echo '$(document).ready(function(){
       ';
 
 $currentdir = getcwd();
-$dir_musica = "/music/";
+$dir_musica = "/music/utenti/".$utente;
 chdir("$dir_musica");
 $filelist = glob("*.mp3");
 

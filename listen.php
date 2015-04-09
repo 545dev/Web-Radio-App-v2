@@ -1,6 +1,5 @@
 <?php
 require ("core/common.php");
-include ("core/user_functions.php");
 include ("core/upload.php");
 
 if (empty($_SESSION['user']))
@@ -303,7 +302,7 @@ if (empty($_SESSION['user']))
                       </li>
                       <?php
                       $currentdir = getcwd();
-                      $dir_musica = "/music/.$utente";
+                      $dir_musica = "/music/utenti/".$utente;
                       chdir("$dir_musica");
                       $filelist = glob("*.m3u");
 
@@ -359,7 +358,7 @@ if (empty($_SESSION['user']))
                      <ul class="list-group list-group-lg no-bg auto m-b-none m-t-n-xxs">
                      <?php
                       $currentdir = getcwd();
-                      $dir_musica = "/music/.$utente";
+                      $dir_musica = "/music/utenti/".$utente;
                       chdir("$dir_musica");
                       $filelist = glob("*.mp3");
 

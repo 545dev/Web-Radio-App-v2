@@ -1,9 +1,8 @@
-
 <?php
 
 if (isset($_POST['upload']))
   {
-    $dir_utente = "/music/.$utente";
+    $dir_utente = "/music/utenti/". $utente . "/";
     $percorso = $dir_utente . basename($_FILES["fileToUpload"]["name"]);
     $percorso = preg_replace('/\s+/', '_', $percorso);
     $uploadOk = 1;
