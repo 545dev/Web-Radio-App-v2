@@ -1,6 +1,5 @@
 <?php
 require ("core/common.php");
-include ("core/user_functions.php");
 include ("core/upload.php");
 
 if (empty($_SESSION['user']))
