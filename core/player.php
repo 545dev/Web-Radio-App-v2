@@ -1,7 +1,9 @@
 <?php
 
+//echo $query_canzone;
+
 echo '$(document).ready(function(){
-	  var myPlaylist = new jPlayerPlaylist({
+	    var myPlaylist = new jPlayerPlaylist({
       jPlayer: "#jplayer_N",
       cssSelectorAncestor: "#jp_container_N"}, [ 
       ';
@@ -11,6 +13,35 @@ $dir_musica = "/music/utenti/".$utente;
 chdir("$dir_musica");
 $filelist = glob("*.mp3");
 
+//echo $query_canzone;
+$query_canzone = "SELECT titolo, artista, percorso FROM canzoni WHERE id = :userid";
+$query_params = array(
+    ':userid' => $_SESSION['user']['id']
+);
+
+try
+  {
+    // Esegue la query
+
+    $stmt = $db->prepare($query_canzone);
+    $result = $stmt->execute($query_params);
+  }
+catch(PDOException $ex)
+  {
+//    die("Failed to run query: " . $ex->getMessage());
+  }
+
+$row = $stmt->fetch();
+
+foreach($row = $stmt->fetch())
+{
+    echo "{ title:\"$row['titolo']\",
+          artist:\"ADG3\",
+          mp3:\"http://104.167.104.14/swag.mp3\",
+          poster: \"images/m0.jpg\" }"; 
+}
+
+/*
 foreach($filelist AS $file)
 {
   if (is_file($file))
@@ -18,9 +49,10 @@ foreach($filelist AS $file)
       echo "{ title:\"$file\",
             artist:\"ADG3\",
             mp3:\"http://104.167.104.14/swag.mp3\",
-            poster: \"images/m0.jpg\" }, ";
+            poster: \"images/m0.jpg\" }, "; 
   }
 }
+*/
 
 chdir("$currentdir");
 
